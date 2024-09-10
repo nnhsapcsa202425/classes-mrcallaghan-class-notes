@@ -1,14 +1,22 @@
 /**
  * This class models a mileage tracker for a car.
  *
- * @author 
- * @version 
+ * @author mrcallaghan
+ * @version 10sep2024
  */
 public class MileageTracker
 {
     /*
      * 2. Define the instance variables (store the object's attributes):
+     *      - specify the visibility (e.g., private)
+     *              private: only accessible by methods in this class
+     *              public: accessible by any code in any class
+     *      - specify the type (e.g., int, double, String)
+     *      - specify the name (e.g., distanceDriven)
      */
+    private int distanceDriven;  // in units of miles
+    private int fuelConsumed;    // in units of gallons
+    private String vin;          // vehicle identification number
 
 
 
@@ -29,10 +37,31 @@ public class MileageTracker
     
     /*
      * 1. Define methods by specifying:
+     *      - the visibility (e.g., public, private)
+     *      - the return type (e.g., void, int)
+     *      - the method name (e.g., incrementDistanceDriven, getDistanceDriven)
+     *      - the parameters and thier types (e.g., miles of type int)
      */
     
+    /**
+     * Increments the number of miles that the car has driven.
+     * 
+     * @param miles the additional distance, in miles, this car has driven
+     */
+    public void incrementDistanceDriven(int miles)
+    {
+        return;
+    }
     
-    
+    /**
+     * Returns the total number of miles driven.
+     * 
+     * @return the total number of miles driven.
+     */
+    public int getDistanceDriven()
+    {
+        return 0;
+    }
     
     
     
@@ -90,6 +119,7 @@ public class MileageTracker
     {
         //vin = vin;
     }
+    
 }
 
 
