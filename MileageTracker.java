@@ -13,6 +13,12 @@ public class MileageTracker
      *              public: accessible by any code in any class
      *      - specify the type (e.g., int, double, String)
      *      - specify the name (e.g., distanceDriven)
+     *      
+     *      Instance varaiables differ from local variables in the following ways:
+     *      - scoped to the entire class (accessible in all methods of the class;
+     *              lifetime is the same as the object)
+     *      - automatically initialized to a default value (0, 0.0, false, null)
+     *      - best practice is not to immediately initialize instance variables when declaring.
      */
     private int distanceDriven;  // in units of miles
     private int fuelConsumed;    // in units of gallons
@@ -26,10 +32,40 @@ public class MileageTracker
     
     /*
      * 3. Define the constructor(s):
+     *      - responsible for initializing newly created objects
+     *      - invoked automatically via the new operator
+     *      - name of the constructor must match that of the class
+     *      - has no return type (not even void)
+     *      - multiple constructors may be defined
+     *      - one costructor may call upon another constructor
      */
     
+    /**
+     * The default constructor for the MileageTracker class.
+     *      Initializes the object's miles driven and fuel consumed to 0 and the vin to null.
+     */
+    public MileageTracker()
+    {
+        /*
+         * The "this" reserved word references the current object on which the method was called.
+         *      (like 'self' in Python)
+         * Its usage is encouraged but not always required.
+         */
+        this.distanceDriven = 0;
+        this.fuelConsumed = 0;
+        this.vin = null;
+    }
     
-    
+    /**
+     * Constructs a new MileageTracker object with the specified distance driven and fuel
+     *      consumed. vin is null.
+     */
+    public MileageTracker(int initialDistanceDriven, int initialFuelConsumed)
+    {
+        this.distanceDriven = initialDistanceDriven;
+        this.fuelConsumed = initialFuelConsumed;
+        this.vin = null;
+    }
     
     
     
@@ -120,6 +156,15 @@ public class MileageTracker
         //vin = vin;
     }
     
+    // this is client code and could be called from any class in our repository
+    public static void main()
+    {
+        MileageTracker car = new MileageTracker();
+        MileageTracker car2 = new MileageTracker(100, 20);
+        //MileageTracker car3 = new MileageTracker(100);
+        System.out.println(car);
+        System.out.println(car2);
+    }
 }
 
 
