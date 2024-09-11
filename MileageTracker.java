@@ -25,13 +25,46 @@ public class MileageTracker
     private String vin;          // vehicle identification number
 
 
-
-
-
-    
     /*
      * 3. Define the constructor(s):
+     *      responsible for initializing newly created object
+     *      invoked automatically via the new operator
+     *      name of the constuctor must match the name of the class
+     *      has no return type (not even void)
+     *      multiple constructors may be defined by a class
+     *      one constructor may call another constructor (with restrictions)
      */
+    
+    /**
+     * Default constructor for the MileasgeTracker class.
+     *      Initializes the object's miles driven and fuel consumed to 0
+     *          and the vin to null
+     */
+    public MileageTracker()
+    {
+        /*
+         * The "this" reserved word references the current object
+         *      (like 'self' in Python)
+         *      It's usage is encourage, but not always required.
+         */
+        this.distanceDriven = 0;
+        this.fuelConsumed = 0;
+        this.vin = null;
+    }
+    
+    /**
+     * Constructs a new MileageTracker object with the specified
+     *  miles driven and fule consumed.  vin starts as null.
+     *  
+     *  @param initialDistanceDriven the number of miles already driven
+     *  @param initialFuelConsumed the number of gallons of fuel already consumed
+     */
+    public MileageTracker(int initialDistanceDriven, int initialFuelConsumed)
+    {
+        this.distanceDriven = initialDistanceDriven;
+        this.fuelConsumed = initialFuelConsumed;
+        this.vin = null;
+    }
     
     
     
@@ -126,4 +159,16 @@ public class MileageTracker
     {
         //vin = vin;
     }
+    
+    
+    
+    
+    public static void main()
+    {
+        MileageTracker tracker = new MileageTracker();
+        MileageTracker tracker2 = new MileageTracker(100000, 5000);
+        System.out.println(tracker);
+        System.out.println(tracker2);
+    }
+    
 }
