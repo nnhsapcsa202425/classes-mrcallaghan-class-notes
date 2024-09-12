@@ -86,7 +86,8 @@ public class MileageTracker
      */
     public void incrementDistanceDriven(int miles)
     {
-        return;
+        //this.distanceDriven = this.distanceDriven + miles;
+        this.distanceDriven += miles;
     }
     
     /**
@@ -96,11 +97,10 @@ public class MileageTracker
      */
     public int getDistanceDriven()
     {
-        return 0;
+        return this.distanceDriven;
     }
     
-    
-    
+
     /**
      * Increment the number of gallons of fuel that this car has consumed
      * 
@@ -108,7 +108,7 @@ public class MileageTracker
      */
     public void incrementFuelConsumed(int gallons)
     {
-        //this.fuelConsumed += gallons;
+        this.fuelConsumed += gallons;
     }
     
     /**
@@ -118,8 +118,7 @@ public class MileageTracker
      */
     public int getFuelConsumed()
     {
-        //return this.fuelConsumed;
-        return 0;
+        return this.fuelConsumed;
     }
     
     
@@ -130,9 +129,9 @@ public class MileageTracker
      */
     public int getMileage()
     {
-        //int mileage = this.fuelConsumed / this.distanceDriven;
-        //return mileage;
-        return 0;
+        int mileage = this.distanceDriven / this.fuelConsumed;
+        return mileage;
+
     }
     
     /**
@@ -142,8 +141,8 @@ public class MileageTracker
      */
     public String getVIN()
     {
-        //return this.vin;
-        return "";
+        return this.vin;
+
     }
     
     /**
@@ -151,9 +150,31 @@ public class MileageTracker
      * 
      * @param vin    the vehicle identification (VIN) of this car
      */
-    public void setVIN(String vin)
+    public void setVIN(String newVIN)
     {
-        //vin = vin;
+        /*
+         * When the parameter is named "vin", it "shadows" the instance variable.
+         * 
+         * Local and parameter variables "shadow" instance variables of the same name.
+         *  In this code, vin would refer to the parameter and not the instance variable.
+         *  
+         *  To refer explicitly to an instance variable, use "this".
+         *  
+         *  Better practice: avoid this issue by giving local, parameter, and instance variables
+         *      unique names!
+         */
+        
+        // bad
+        vin = vin;
+        
+        // good
+        this.vin = vin;
+        
+        // best
+        this.vin = newVIN;
+        
+        
+        
     }
     
     // this is client code and could be called from any class in our repository
