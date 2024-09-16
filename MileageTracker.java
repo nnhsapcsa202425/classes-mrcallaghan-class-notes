@@ -24,12 +24,6 @@ public class MileageTracker
     private int fuelConsumed;    // in units of gallons
     private String vin;          // vehicle identification number
 
-
-
-
-
-
-    
     /*
      * 3. Define the constructor(s):
      *      - responsible for initializing newly created objects
@@ -66,10 +60,6 @@ public class MileageTracker
         this.fuelConsumed = initialFuelConsumed;
         this.vin = null;
     }
-    
-    
-    
-    
     
     /*
      * 1. Define methods by specifying:
@@ -177,10 +167,30 @@ public class MileageTracker
         
     }
     
+    
+    /*
+     * The toString method is called automatically when Java neeeds to convert the the object to
+     *   a string.  The toString method returns a string that contains, in general, all of the instance
+     *     variables and their values.
+     */
+    /**
+     * @return string representation of a MileageTracker object.
+     */
+    public String toString()
+    {
+        String str = "\nMileageTracker:\n" + "VIN: " + this.vin +
+            "\nDistance Driven: " + this.distanceDriven + " miles" +
+            "\nFuel consumed: " + this.fuelConsumed + " gallon" + 
+            "\nMileage: " + this.getMileage() + " mpg";
+        return str;
+    }
+    
     // this is client code and could be called from any class in our repository
     public static void main()
     {
         MileageTracker car = new MileageTracker();
+        car.incrementDistanceDriven(100);
+        car.incrementFuelConsumed(4);
         MileageTracker car2 = new MileageTracker(100, 20);
         //MileageTracker car3 = new MileageTracker(100);
         System.out.println(car);
