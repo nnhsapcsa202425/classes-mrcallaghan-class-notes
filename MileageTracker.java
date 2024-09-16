@@ -64,13 +64,7 @@ public class MileageTracker
         this.fuelConsumed = initialFuelConsumed;
         this.vin = null;
     }
-    
-    
-    
-    
-    
-    
-    
+
     
     /*
      * 1. Define methods by specifying:
@@ -183,12 +177,32 @@ public class MileageTracker
     }
     
     
+    /*
+     * The to String mehtod is called automatically when Java needs to convert an object to a String. 
+     *      The toString method returns a String that contains, in general, all of the instance 
+     *      variables and thier values.
+     */
+    /**
+     * @return a string representation of a MileageTracker object.
+     */
+    public String toString()
+    {
+        String str = "\nMileagetracker: " + "\nVIN: " + this.vin +
+            "\nDistance Driven: " + this.distanceDriven + " miles" +
+            "\nFuel Consumed: " + this.fuelConsumed + " gallons" +
+            "\nMileage: " + this.getMileage() + " mpg";
+        return str;
+    }
+    
+    
     // this code could go anywhere in the classes repository
     public static void main()
     {
         MileageTracker car = new MileageTracker();
+        car.incrementDistanceDriven(100);
+        car.incrementFuelConsumed(4);
         System.out.println(car);
-        MileageTracker car2 = new MileageTracker();
+        MileageTracker car2 = new MileageTracker(100, 20);
         System.out.println(car2);
         MileageTracker car3 = new MileageTracker(100000, 20000);
         System.out.println(car);
