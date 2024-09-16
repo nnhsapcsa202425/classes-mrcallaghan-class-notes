@@ -174,12 +174,23 @@ public class MileageTracker
         this.vin = newVIN;
     }
     
+    public String toString()
+    {
+        String str = "\nMileageTracker:" + "\nVIN: " + this.getVIN() +
+            "\nDistance Driven: " + this.getDistanceDriven() + " miles" +
+            "\nFuel Consumed: " + this.getFuelConsumed() + " gallons" + 
+            "\nMileage: " + this.getMileage() + " mpg";
+        
+        return str;
+    }
     
     
     
     public static void main()
     {
         MileageTracker tracker = new MileageTracker();
+        tracker.incrementFuelConsumed(10);
+        tracker.incrementDistanceDriven(200);
         MileageTracker tracker2 = new MileageTracker(100000, 5000);
         System.out.println(tracker);
         System.out.println(tracker2);
