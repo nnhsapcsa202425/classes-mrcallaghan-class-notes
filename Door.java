@@ -1,33 +1,125 @@
-
 /**
- * Write a description of class Door here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * A class to model a Door.  Ch. 3: Door (pair) activity.
+ * 
+ * @author mr callaghan
+ * @version 18sep2024
  */
 public class Door
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
+    private boolean isLocked;
+    private boolean isOpened;
+    private String name;
+    
     /**
-     * Constructor for objects of class Door
+     * Default constructor for class Door.  Sets the default state to closed and unlocked with a null name.
      */
     public Door()
     {
-        // initialise instance variables
-        x = 0;
+        // default state of a new door is unlocked and closed
+        this.isLocked = false;
+        this.isOpened = false;
+        this.name = null;
+    }
+    
+    /**
+     * Constructor for class Door that provides a custom starting state.
+     * 
+     * @param locked starting lock state for the door
+     * @param opened starting open state for the door
+     * @param initialName starting name for the door
+     */
+    public Door(boolean locked, boolean opened, String initialName)
+    {
+        this.isLocked = locked;
+        this.isOpened = opened;
+        this.name = initialName;
+    }
+    
+    /**
+     * Locks the door.
+     */
+    public void lock()
+    {
+        this.isLocked = true;
+    }
+    
+    /**
+     * Unlocks the door.
+     */
+    public void unlock()
+    {
+        this.isLocked = false;
+    }
+    
+    /**
+     * Opens the door.
+     */
+    public void open()
+    {
+        this.isOpened = true;
+    }
+    
+    /**
+     * Closes the door.
+     */
+    public void close()
+    {
+        this.isOpened = false;
+    }
+    
+    /**
+     * Returns door's lock state.
+     * 
+     * @return the lock state of the door.
+     */
+    public boolean getLocked()
+    {
+        return this.isLocked;
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * Returns door's open state.
+     * 
+     * @return the open state of the door.
      */
-    public int sampleMethod(int y)
+    public boolean getOpened()
     {
-        // put your code here
-        return x + y;
+        return this.isOpened;
     }
+    
+    /**
+     * Returns door's name.
+     * 
+     * @return the name of the door.
+     */
+    public String getName()
+    {
+        return this.name;
+    }
+    
+    /**
+     * Sets the door's name to a new name.
+     * 
+     * @param newName the new name of the door.
+     */
+    public void setName(String newName)
+    {
+        this.name = newName;
+    }
+    
+    /**
+     * toString method for a door.
+     * 
+     * @return string representation of a door's state.
+     */
+    public String toString()
+    {
+        String str = "The state of this door:\n";
+        str += "name: " + this.getName() + "\n";
+        str += "opened: " + this.getOpened() + "\n";
+        str += "locked: " + this.getLocked() + "\n";
+        return str;
+        
+    }
+
 }
