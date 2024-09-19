@@ -6,7 +6,7 @@
  */
 public class Door
 {
-    private boolean isLocked;
+    private boolean isLocked;  // optional
     private boolean isOpened;
     private String name;
     

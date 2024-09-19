@@ -78,13 +78,13 @@ public class VendingMachineTest
         assertEquals(0, numberOfTokens);
     }
     
-    // @Test
-    // public void testConstructor()
-    // {
-        // VendingMachine testMachine= new VendingMachine(20);
-        // int numberOfCans = testMachine.getCanCount();
-        // int numberOfTokens = testMachine.getTokenCount();
-        // assertEquals(20, numberOfCans);
-        // assertEquals(0, numberOfTokens);
-    // }
+    @Test
+    public void testConstructor()
+    {
+        VendingMachine testMachine= new VendingMachine(20);
+        int numberOfCans = testMachine.getCanCount();
+        int numberOfTokens = testMachine.getTokenCount();
+        assertEquals(20, numberOfCans);
+        assertEquals(0, numberOfTokens);
+    }
 }
