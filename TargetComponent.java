@@ -26,11 +26,11 @@ public class TargetComponent extends JComponent
         //          verify that your target appears
 
         // create targets
-        //Target target1 = new Target(100, 150);
-        //Target target2 = new Target(200, 300);
+        Target target1 = new Target(100, 150);
+        Target target2 = new Target(200, 300);
         
         // draw targets
-        //target1.draw(g2);
-        //target2.draw(g2);      
+        target1.draw(g2);
+        target2.draw(g2);      
     }
 }
