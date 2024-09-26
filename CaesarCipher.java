@@ -5,8 +5,8 @@ import java.util.Scanner;
  *      Caesar Cipher.
  *      (as described in The Code Book by Simon Singh)
  *
- * @author gcschmit
- * @version 21 September 2018
+ * @author mcallaghan
+ * @version 26 sep 2024
  */
 public class CaesarCipher
 {
@@ -14,7 +14,10 @@ public class CaesarCipher
     
     private String keyphrase;
     
-    
+    public CaesarCipher(String initialKeyphrase)
+    {
+        this.keyphrase = initialKeyphrase;
+    }
     
     
     
