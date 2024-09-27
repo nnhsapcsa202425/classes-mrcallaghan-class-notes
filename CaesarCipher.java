@@ -19,6 +19,53 @@ public class CaesarCipher
         this.keyphrase = initialKeyphrase;
     }
     
+    /**
+     * Returns a string that describes the average time to crack the cipher,
+     *      in several formats, based on the specified number of seconds per guess.
+     *      
+     * @param secPerGuess the numbe rof seconds to evaluate each attempt
+     * @return a string that describes the average time to crack the cipher
+     */
+    public String getComplexityDescription(int secPerGuess)
+    {
+        /*
+         * Instead of using "magic numbers"  (e.g., 3.14159), use constants defined by us
+         *      or the java standard library.  For Example, in the Math calss Pi is defined as:
+         *      
+         *      public static final double PI = 3.141592654;
+         *      
+         *      reference this value by writing: Math.PI
+         *      
+         * Declare a constant with the final keyword.
+         *      By convention, constants are in all caps with underscores.
+         */
+        final int SECONDS_FOR_EVERY_MINUTE = 60;
+        //SECONDS_FOR_EVERY_MINUTE = 30;  // cannot reassign to a final variable
+        final int MINUTES_FOR_EVERY_HOUR = 60;
+        final int HOURS_FOR_EVERY_DAY = 24;
+        final int DAYS_FOR_EVERY_YEAR = 365;
+        
+        String desc = "";
+        
+        long totalSeconds = this.calculateAverageTimeToCrack(secPerGuess);
+        
+        /*
+         * Use integer division to calculate how many whole minutes are in the specified number of
+         *  seconds.
+         *  
+         *  Integer divison (like // operator in python) discards the remainder (truncates).
+         *  
+         *  Java does integer division when both operands are integer types;
+         *      floating point division when one or both operands are floats.
+         *      
+         *      For Example:
+         *        3 / 4 => 0  (3 and 4 are int literals)
+         *        3.0 / 4 => 0.75 (3.0 is a double literal)
+         */
+        long wholeMinutes = totalSeconds / SECONDS_FOR_EVERY_MINUTE;
+        
+        return desc;
+    }
     
     
     /**
@@ -33,8 +80,8 @@ public class CaesarCipher
     {
         String encryptedText = "";
 
-        /*
-         * The keyphrase, after removing any repeated letters is used as the beginning of the
+        
+         /* The keyphrase, after removing any repeated letters is used as the beginning of the
          *      jumbled cipher alphabet. The remainder of the cipher alphabet is merely the
          *      remaining letters of the alphabet, in their correct order, starting where the
          *      keyphrase ends.

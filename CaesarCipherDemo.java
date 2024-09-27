@@ -74,6 +74,12 @@ public class CaesarCipherDemo
         
         CaesarCipher cipher = new CaesarCipher(keyphrase);
         
+        String complexityDescription = cipher.getComplexityDescription(secondsPerGuess);
+        System.out.println("Complexity: " + complexityDescription);
+        
+        String encryptedText = cipher.encrypt(text);
+        System.out.println("Encrypted: " + encryptedText);
+        
         
         
         
