@@ -19,7 +19,59 @@ public class CaesarCipher
         this.keyphrase = intialKeyphrase;
     }
     
-    
+    /**
+     * Returns a string that describes the average time to crack the cipher,
+     *      in several formats, based on the specified number of seconds per guess.
+     *      
+     * @param secPerGuess the number of seconds to evaluate each attempt
+     * @return a string that decribe the average time to crack the cipher
+     */
+    public String getComplexityDescription(int secPerGuess)
+    {
+        /*
+         * Instead of using "magic numbers"(e.g., 3.1415), use constants defined by us
+         *      or the java standard library.  For example, in the Math class
+         *      Pi is defined:
+         *      
+         *      public static final double PI = 3.141592654;
+         *      
+         *      to use this, we call Math.PI
+         *      
+         *      Declare a constant with the final keyword.
+         *      
+         *      By convention, constants are in all caps with underscores.
+         */
+        final int SECONDS_FOR_EVERY_MINUTE = 60;
+        final int MINUTES_FOR_EVERY_HOUR = 60;
+        final int HOURS_FOR_EVERY_DAY = 24;
+        final int DAYS_FOR_EVERY_YEAR = 365;
+        
+        //SECONDS_FOR_EVERY_MINUTE = 30;  // compiler will not allow a final variable to change
+        
+        String desc = "";
+        
+        // one method can invoke another method! invoke the method on 'this'.
+        long totalSeconds = this.calculateAverageTimeToCrack(secPerGuess);
+        
+        /*
+         * Use integer division to calculate how many whole minutes are in a 
+         *  specified numbe rof seconds.
+         *  
+         *  Integer division (like // in Python) discards the remainder.
+         *  
+         *  Java does integer division when both operands are integer types;
+         *      floating point divison occurs when one or both operands are floats (or doubles)
+         *      
+         *      For example:
+         *          3 / 4 => 0          (3 and 4 are int literals)
+         *          3.0 / 4 => 0.75     (3.0 is a double literal)
+         */
+        long wholeMinutes = totalSeconds / SECONDS_FOR_EVERY_MINUTE;
+        
+        long leftoverSeconds = totalSeconds % SECONDS_FOR_EVERY_MINUTE;
+        
+        return desc;
+    }
     
     /**
      * Encrypts the specified text using the specified keyphrase using a
