@@ -14,8 +14,48 @@ public class CaesarCipher
     
     private String keyphrase;
     
+    public CaesarCipher(String initialKeyphrase)
+    {
+        this.keyphrase = initialKeyphrase;
+    }
     
-    
+    /**
+     * Returns a string that descriibes the average time to crack the cipher,
+     *      in several formats, based on the specific number of seconds per guess.
+     *      
+     * @param secPerGuess the number of seconds to evaluate each attempt
+     * @return a string that describes the average time to crack the cipher
+     */
+    public String getComplexityDescription(int secPerGuess)
+    {
+        /*
+         * Instead of using a "magic number" (e.g., 3.14159), us constants defined
+         *  by us or the java standard library.  For example, in the Math class, Pi is defined 
+         *  as:
+         *  
+         *  public static final double PI = 3.141592654;
+         *  
+         *  Math.PI
+         *  
+         *  Declare a constant with the final keyword.
+         *      By convention, constant are in all uppercase with underscores.
+         */
+        final int SECONDS_FOR_EVERY_MINUTE = 60;
+        //SECONDS_FOR_EVERY_MINUTE = 30;  // if we try to change the value, a compile-time error occurs.
+        
+        final int MINUTES_FOR_EVERY_HOUR = 60;
+        final int HOURS_FOR_EVERY_DAY = 24; 
+        final int DAYS_FOR_EVERY_YEAR = 365;
+        
+        String desc = "";
+        
+        // one method in a class can invoke another method in the same class
+        //  we invoke the method on "this"
+        long totalSecond = this.calculateAverageTimeToCrack(secPerGuess);
+         
+        
+        return desc;
+    }
     
     
     /**
