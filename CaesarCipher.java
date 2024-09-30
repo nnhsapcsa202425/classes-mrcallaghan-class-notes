@@ -68,7 +68,29 @@ public class CaesarCipher
          */
         long wholeMinutes = totalSeconds / SECONDS_FOR_EVERY_MINUTE;
         
+        /*
+         * Use the modulo (mod) operator to calculate how many seconds are left over.
+         * 
+         * The mod (%) operator returns the remainder from a division operation.
+         * 
+         * It can be very useful when pair it with integer division.
+         * 
+         * For example:
+         *    7 % 2 => 1
+         *    11 % 3 => 2
+         *    6 % 2 => 0
+         *    4 % 11 => 4
+         */
         long leftoverSeconds = totalSeconds % SECONDS_FOR_EVERY_MINUTE;
+        
+        long wholeHours = wholeMinutes / MINUTES_FOR_EVERY_HOUR;
+        long leftoverMinutes = wholeMinutes % MINUTES_FOR_EVERY_HOUR;
+    
+        long wholeDays = wholeHours / HOURS_FOR_EVERY_DAY;
+        long leftoverHours = wholeHours % HOURS_FOR_EVERY_DAY;
+    
+        long wholeYears = wholeDays / DAYS_FOR_EVERY_YEAR;
+        long leftoverDays = wholeDays % DAYS_FOR_EVERY_YEAR;
         
         return desc;
     }
