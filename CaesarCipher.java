@@ -11,14 +11,14 @@ import java.util.Scanner;
 public class CaesarCipher
 {
     private static final String ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    
+
     private String keyphrase;
-    
+
     public CaesarCipher(String intialKeyphrase)
     {
         this.keyphrase = intialKeyphrase;
     }
-    
+
     /**
      * Returns a string that describes the average time to crack the cipher,
      *      in several formats, based on the specified number of seconds per guess.
@@ -45,14 +45,14 @@ public class CaesarCipher
         final int MINUTES_FOR_EVERY_HOUR = 60;
         final int HOURS_FOR_EVERY_DAY = 24;
         final int DAYS_FOR_EVERY_YEAR = 365;
-        
+
         //SECONDS_FOR_EVERY_MINUTE = 30;  // compiler will not allow a final variable to change
-        
+
         String desc = "";
-        
+
         // one method can invoke another method! invoke the method on 'this'.
         long totalSeconds = this.calculateAverageTimeToCrack(secPerGuess);
-        
+
         /*
          * Use integer division to calculate how many whole minutes are in a 
          *  specified numbe rof seconds.
@@ -67,7 +67,7 @@ public class CaesarCipher
          *          3.0 / 4 => 0.75     (3.0 is a double literal)
          */
         long wholeMinutes = totalSeconds / SECONDS_FOR_EVERY_MINUTE;
-        
+
         /*
          * Use the modulo (mod) operator to calculate how many seconds are left over.
          * 
@@ -82,22 +82,46 @@ public class CaesarCipher
          *    4 % 11 => 4
          */
         long leftoverSeconds = totalSeconds % SECONDS_FOR_EVERY_MINUTE;
-        
+
         long wholeHours = wholeMinutes / MINUTES_FOR_EVERY_HOUR;
         long leftoverMinutes = wholeMinutes % MINUTES_FOR_EVERY_HOUR;
-    
+
         long wholeDays = wholeHours / HOURS_FOR_EVERY_DAY;
         long leftoverHours = wholeHours % HOURS_FOR_EVERY_DAY;
-    
+
         long wholeYears = wholeDays / DAYS_FOR_EVERY_YEAR;
         long leftoverDays = wholeDays % DAYS_FOR_EVERY_YEAR;
-        
+
         desc = "Average time to crack: " + wholeYears + " years, " + leftoverDays + " days, " +
-            leftoverHours + " hours, " + leftoverMinutes + " minutes, " + leftoverSeconds + " seconds\n";
+        leftoverHours + " hours, " + leftoverMinutes + " minutes, " + leftoverSeconds + " seconds\n";
         
+        /*
+         * A conversion is when a data value is converted from type to another
+         *  (e.g., int to double; double to int; int to long)
+         *  
+         *  Widening: preserves information (e.g., int to double, int to long)
+         *  Narrowing: lossy; may lose information (e.g., double to int)
+         *  
+         *  Java only automatically performs widening conversions.
+         */
+        double yearsAsDecimal = totalSeconds;
+        
+        /*
+         * Arithmetic promotion
+         * 
+         * If the two operands are of different types, Java attempts to promote one of the operands
+         *  (widening conversion) and then performs the operation.
+         *  
+         *  This promotion may be too late! If the multiplication overflows an int,
+         *      the wrong value will be assigned.
+         */
+        final long SECONDS_FOR_EVERY_YEAR = (long) SECONDS_FOR_EVERY_MINUTE * MINUTES_FOR_EVERY_HOUR * 
+            HOURS_FOR_EVERY_DAY * DAYS_FOR_EVERY_YEAR;
+        
+
         return desc;
     }
-    
+
     /**
      * Encrypts the specified text using the specified keyphrase using a
      *      keyphrase-enhanced Caesar Cipher.
@@ -174,7 +198,7 @@ public class CaesarCipher
         int lettersRemaining = NUMBER_OF_LETTERS_IN_ALPHABET;
         int keyphraseLength = this.keyphrase.length();
         long combinations = 1;
-        
+
         /*
          * Calculate the number of combintations for the specified keyphrase length.
          *  For example, if the keyphrase is six characters long:
