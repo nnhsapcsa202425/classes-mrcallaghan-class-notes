@@ -92,6 +92,9 @@ public class CaesarCipher
         long wholeYears = wholeDays / DAYS_FOR_EVERY_YEAR;
         long leftoverDays = wholeDays % DAYS_FOR_EVERY_YEAR;
         
+        desc = "Average time to crack: " + wholeYears + " years, " + leftoverDays + " days, " +
+            leftoverHours + " hours, " + leftoverMinutes + " minutes, " + leftoverSeconds + " seconds\n";
+        
         return desc;
     }
     
