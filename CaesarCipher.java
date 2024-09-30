@@ -51,8 +51,50 @@ public class CaesarCipher
         
         // one method in a class can invoke another method in the same class
         //  we invoke the method on "this"
-        long totalSecond = this.calculateAverageTimeToCrack(secPerGuess);
-         
+        long totalSeconds = this.calculateAverageTimeToCrack(secPerGuess);
+        
+        /*
+         * Use integer division to calculate how many whole minutes are in a specified number 
+         *      of seconds.
+         *      
+         *      Integer Division (like // operator in Python) discards the remainder.
+         *      
+         *      Java does integer division when both operands are integer types;
+         *        floating point division ocurs when one or both operands are floats (or doubles).
+         *        
+         *  For example:
+         *     3 / 4 => 0  ( 3 and 4 are integer literals)
+         *     3.0 / 4 => 0.75 ( 3.0 is a double literal)
+         */
+        long wholeMinutes = totalSeconds / SECONDS_FOR_EVERY_MINUTE;
+        
+        /*
+         * Use the modulo (mod) operator to calcualte how many seconds are left over (remainder).
+         * 
+         * The mod operator (%) returns the remainder of a division operation.
+         * 
+         * It can be very useful  when paired with integer dvision.
+         * 
+         * For Example:
+         *      7 % 2 => 1
+         *      11 % 3 => 2
+         *      6 % 2 => 0
+         *      4 % 11 => 4
+         */
+        long leftoverSeconds = totalSeconds % SECONDS_FOR_EVERY_MINUTE;
+        
+        long wholeHours = wholeMinutes / MINUTES_FOR_EVERY_HOUR;
+        long leftoverMinutes = wholeMinutes % MINUTES_FOR_EVERY_HOUR;
+        
+        long wholeDays = wholeHours / HOURS_FOR_EVERY_DAY;
+        long leftoverHours = wholeHours % HOURS_FOR_EVERY_DAY;
+        
+        long wholeYears = wholeDays / DAYS_FOR_EVERY_YEAR;
+        long leftoverDays = wholeDays % DAYS_FOR_EVERY_YEAR;
+        
+        desc = "Average time to crack: " + wholeYears + " years, " + leftoverDays +
+            " days, " + leftoverHours + " hours, " + leftoverMinutes + " minutes, " +
+            leftoverSeconds + " seconds\n";
         
         return desc;
     }
