@@ -96,7 +96,30 @@ public class CaesarCipher
             " days, " + leftoverHours + " hours, " + leftoverMinutes + " minutes, " +
             leftoverSeconds + " seconds\n";
         
+        /*
+         * A conversion is when  a data value is converted from one type to another
+         *  (e.g., int to a double; double to an int; int to a long)
+         *  
+         *  Widening: preserves information (e.g., int to a double, int to a long)
+         *  Narrowing: lossy;may lose infornation (e.g, double to an int)
+         *  
+         *  Java only automatically performs widening conversion.
+         */    
+        double yearsAsDecimal = totalSeconds;
+        
+        /*
+         * Arithmetic Promotion
+         * 
+         * If the two operands are of different types, Java attempts to promote one of the two
+         *  operands (widening conversion) and the performs the operation.
+         */
+        final long SECONDS_FOR_EVERY_YEAR = SECONDS_FOR_EVERY_MINUTE * MINUTES_FOR_EVERY_HOUR *
+            HOURS_FOR_EVERY_DAY * DAYS_FOR_EVERY_YEAR;
+            
+            
+            
         return desc;
+        
     }
     
     
