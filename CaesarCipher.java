@@ -64,6 +64,62 @@ public class CaesarCipher
          */
         long wholeMinutes = totalSeconds / SECONDS_FOR_EVERY_MINUTE;
         
+        /*
+         * Use the modulo (mod) operator to calculate how many seconds are left over.
+         * 
+         * The mod operator (%) returns the remainder of the divison operation.
+         * 
+         * It can be very useful when paired with integer division.
+         * 
+         * For example:
+         *      7 % 2 => 1
+         *      11 % 3 => 2
+         *      6 % 2 => 0
+         *      4 % 11 => 4
+         */
+        long leftoverSeconds = totalSeconds % SECONDS_FOR_EVERY_MINUTE;
+        
+        long wholeHours = wholeMinutes / MINUTES_FOR_EVERY_HOUR;
+        long leftoverMinutes = wholeMinutes % MINUTES_FOR_EVERY_HOUR;
+        
+        long wholeDays = wholeHours / HOURS_FOR_EVERY_DAY;
+        long leftoverHours = wholeHours % HOURS_FOR_EVERY_DAY;
+        
+        long wholeYears = wholeDays / DAYS_FOR_EVERY_YEAR;
+        long leftoverDays = wholeDays % DAYS_FOR_EVERY_YEAR;
+        
+        desc = "Averarge time to crack: " + wholeYears + " years, " + leftoverDays +
+            " days, " + leftoverHours + " hours, " + leftoverMinutes + " minutes, " +
+            leftoverSeconds + " seconds\n";
+        
+        /*
+         * A conversion is when a data value is converted from one type to another
+         *  (e.g., int to a double; doble to an int; int to a long)
+         *  
+         *  Widening: preserves information (e.g., int to a double)
+         *  Narrowing: lossy; may lose information (e.g., double to an int)
+         *  
+         *  Java only automatically performs widening conversions.
+         */
+        double yearsAsDecimal = totalSeconds;
+        
+        /*
+         * ARITHMETIC PROMOTION
+         * 
+         * If the two operands are of different types, Java attempts to promote one
+         *      of the two operands (widening conversion) and then execute the operation.
+         *      
+         *      In this case, both SECONDS_FOR_EVERY_MINUTE and MINUTES_FOR_EVERY_HOUR and ints;
+         *      so, Java doesn't need to perform and promotion, and instead performs the multiplication
+         *      and returns the result as an int. Only after all three multiplications does Java promote
+         *      the int value to the resulting product to a long and then assigns it to SECONDS_FOR_EVERY_YEAR
+         *      
+         *      This promotion may be too late! If the multiplication overflows an int, the wrong
+         *      value will be promoted to a long and stored.
+         */
+        final long SECONDS_FOR_EVERY_YEAR = SECONDS_FOR_EVERY_MINUTE * MINUTES_FOR_EVERY_HOUR * 
+            HOURS_FOR_EVERY_DAY * DAYS_FOR_EVERY_YEAR;
+        
         return desc;
     }
     
