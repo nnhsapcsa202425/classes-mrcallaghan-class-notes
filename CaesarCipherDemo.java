@@ -76,6 +76,10 @@ public class CaesarCipherDemo
         System.out.println("Complexity: " + complexityDescription);
         
         
+        String encryptedText = cipher.encrypt(text);
+        System.out.println("Encrypted text: " + encryptedText);
+        
+        
         
         
         

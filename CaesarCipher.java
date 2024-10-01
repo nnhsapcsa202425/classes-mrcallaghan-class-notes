@@ -112,11 +112,40 @@ public class CaesarCipher
          * 
          * If the two operands are of different types, Java attempts to promote one of the two
          *  operands (widening conversion) and the performs the operation.
+         *  
+         *  This promotion may be too late!  If the multiplication overflows the int type,
+         *      the wrong value would be promoted to along and stored.
          */
         final long SECONDS_FOR_EVERY_YEAR = SECONDS_FOR_EVERY_MINUTE * MINUTES_FOR_EVERY_HOUR *
             HOURS_FOR_EVERY_DAY * DAYS_FOR_EVERY_YEAR;
-            
-            
+        
+        /*
+         * In this example, the value of SECONDS_FOR_EVERY_YEAR is promoted to a double
+         *  and then floating point division is pefomred and the result is assigned
+         *  to yearsAsDecimal.
+         */
+        yearsAsDecimal = yearsAsDecimal / SECONDS_FOR_EVERY_YEAR;
+        desc += "or " + yearsAsDecimal + " years\n";
+        
+        /*
+         * To force a conversion, use the cast operator.
+         *      A cast is the "I know what I'm doing, trust me" conversion.
+         *      
+         *      (int)84.69 => truncates to an int with the value of 84
+         *      (int)(3.6 + 0.5) => truncates 4.1 to an int with the value of 4
+         *      
+         *      If we want to round a double to the nearest integer value, one appraoch
+         *       is to add 0.5 and then cast the result to an int, which truncates the decimal portion.
+         */
+        int decades = (int) ((yearsAsDecimal / 10) + 0.5);
+        
+        /*
+         * You cannot always cast from one type to another.For example, Strings cannot be cast to numbers.
+         *  Instead rely on the String concatenation operator to convert (not cast) the primitive
+         *  to a String representation of that value.
+         */
+        //String decadesAsString = (String) decades;
+        desc += "or about " + decades + " decades\n";    
             
         return desc;
         
