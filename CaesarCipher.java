@@ -117,9 +117,35 @@ public class CaesarCipher
          *      This promotion may be too late! If the multiplication overflows an int, the wrong
          *      value will be promoted to a long and stored.
          */
-        final long SECONDS_FOR_EVERY_YEAR = SECONDS_FOR_EVERY_MINUTE * MINUTES_FOR_EVERY_HOUR * 
+        final long SECONDS_FOR_EVERY_YEAR = (long) SECONDS_FOR_EVERY_MINUTE * MINUTES_FOR_EVERY_HOUR * 
             HOURS_FOR_EVERY_DAY * DAYS_FOR_EVERY_YEAR;
+            
+        /*
+         * In this example, the value of SEONDS_FOR_EVERY_YEAR is promoted to an double
+         *      and then the flaoting point division operation is performed and the result
+         *      is stored in the yearsAsDecimal variable.
+         */    
+        yearsAsDecimal = yearsAsDecimal / SECONDS_FOR_EVERY_YEAR;
+        desc += "or " + yearsAsDecimal + " years\n";
         
+        /*
+         * To force a conversion, use the cast operator.
+         *  A cast is the "I know what I'm doing converison, trust me"
+         *  
+         *      (int) 84.69 => truncates to an int with a value of 84
+         *      (int) (3.6 + 0.5) => truncates 4.1 to an int with the value of 4
+         *      
+         *      The following divides the yearsAsDecimal by 10, then rounds the resulting double to an int.
+         */
+        int decades = (int) ((yearsAsDecimal / 10) + 0.5);
+        
+        /*
+         * However, you cannot always cast one type to another.  For example, we don't use
+         *  casting to convert numbers to Strings, instead we use string contatentation.
+         */
+        //String decadesAsString = (String) decades;
+        desc += "or about " + decades + " decades\n";
+    
         return desc;
     }
     
