@@ -10,6 +10,8 @@ public class CaesarCipherDemo
 {
     public static void main(String[] args)
     {
+        
+        
         /*
          * A Scanner object parses primitive types and Strings from a stream.
          * 
@@ -74,5 +76,12 @@ public class CaesarCipherDemo
         System.out.println("Encrypted: " + encryptedText);
         
         
+        // demo #1
+        int n = 1000000;
+        System.out.println("Integer overflow: " + n * n);
+        
+        // demo #2
+        double f = 4.35;
+        System.out.println("Floating point imprecision: " + 100 * f);
     }
 }

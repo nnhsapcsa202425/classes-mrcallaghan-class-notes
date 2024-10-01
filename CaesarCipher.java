@@ -117,8 +117,33 @@ public class CaesarCipher
          */
         final long SECONDS_FOR_EVERY_YEAR = (long) SECONDS_FOR_EVERY_MINUTE * MINUTES_FOR_EVERY_HOUR * 
             HOURS_FOR_EVERY_DAY * DAYS_FOR_EVERY_YEAR;
+            
+        /*
+         * In this example, the value of the SECONDS_FOR_EVERY_YEAR is promoted to a double
+         *  and then floating point division is performed and the result assigned to yearsAsDecimal.
+         */
+        yearsAsDecimal = yearsAsDecimal / SECONDS_FOR_EVERY_YEAR;
+        desc += "or " + yearsAsDecimal + " years\n";
         
-
+        /*
+         * To force a conversion, use the cast operator.
+         *  A cast is the "I know what I'm doing" conversion.
+         *  
+         *      (int) 84.94 => truncates to an int and results in 84
+         *      (int) (3.6 + 0.5) => truncates the decimal 4.1 to an int value of 4
+         *      (int) (3.1 + 0.5) => 3.6 truncates to 3
+         *      
+         *  The following diviides the yearsAsDecimal by 10, then rounds the resulting double to an int.
+         */
+        int decades = (int) ((yearsAsDecimal / 10) + 0.5);
+        
+        /*
+         * However, you cannot cast from any type to another.  For example, a number cannot
+         *  be cast to a String.  Use string contacenation for converting numbers to Strings.
+         */
+        //String decadesString = (String) decades;
+        desc += "or about " + decades + " decades\n";
+        
         return desc;
     }
 
