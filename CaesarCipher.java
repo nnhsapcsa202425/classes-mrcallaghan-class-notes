@@ -16,7 +16,77 @@ public class CaesarCipher
 
     public CaesarCipher(String intialKeyphrase)
     {
-        this.keyphrase = intialKeyphrase;
+        //this.keyphrase = intialKeyphrase;
+        this.compressKeyphrase(intialKeyphrase);
+    }
+    
+    /**
+     * Compress the specified keyphrase by removing all duplicate letters.
+     * 
+     * @param initKeyphrase the keyphrase to compress
+     */
+    private void compressKeyphrase(String initKeyphrase)
+    {
+        this.keyphrase = "";
+        
+        /*
+         * length
+         *   return the number of characters in a string
+         */
+        int keyphraseLength = initKeyphrase.length();
+        
+        for (int i = 0; i < keyphraseLength; i++)  // loop kephraseLength times
+        {
+            /*
+             * substring
+             *      returns part of a string starting with the first specified index up to, but
+             *          not including, the seconf specified index.
+             *          
+             *          initKeyphrase:
+             *          C A E S A R
+             *          0 1 2 3 4 5  => indices, index values
+             *          
+             *          length: 6
+             *          
+             *          substring does not support negative indices, like python
+             *          instead, to access the last postion in a string, do this:
+             *              initKeyphrase.substring(initKeyphrase.length() - 1)
+             */
+            String letter = initKeyphrase.substring( i , i + 1);
+            
+            /*
+             * if only one index is specified, returns part of the string starting at the specified
+             *  index through the end of the string.
+             *  
+             */
+            String restOfKeyphrase = initKeyphrase.substring(i + 1);
+            // same as: initKeyphrase.substring( i + 1, initKeyphrase.length());
+            
+            /*
+             * indexOf
+             *  returns the index of the start of the first occurence of the specifies string.
+             *      returns -1 if not found
+             *      
+             *      restOfKeyphrase:
+             *      A E S A R
+             *      0 1 2 3 4
+             *      
+             *      length: 5
+             *      
+             *      For example: restOfKeyphrase.indexOf("SA");  => returns 2
+             */
+            int index = restOfKeyphrase.indexOf(letter);
+            
+            if(index == -1)  // if the letter is not a duplicate
+            {
+                this.keyphrase = this.keyphrase + letter;
+                // same as: this.keyphrase += letter;
+            }
+            
+            
+        }
+        
+        
     }
 
     /**
