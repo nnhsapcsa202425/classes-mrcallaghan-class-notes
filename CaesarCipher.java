@@ -16,7 +16,83 @@ public class CaesarCipher
     
     public CaesarCipher(String initialKeyphrase)
     {
-        this.keyphrase = initialKeyphrase;
+        //this.keyphrase = initialKeyphrase;
+        // prepare the keyphrase by removing duplicate letters
+        this.compressKeyphrase(initialKeyphrase);
+    }
+    
+    /**
+     * Comress the specified keyphrase by removing all duplicate letters.
+     * 
+     * @param initKeyphrase the keyphrase to compress
+     */
+    private void compressKeyphrase(String initKeyphrase)
+    {
+        this.keyphrase = "";
+        
+        /*
+         * length
+         *      return the number of characters in the string
+         */
+        int keyphraseLength = initKeyphrase.length();
+        
+        for(int i = 0; i < keyphraseLength; i++)
+        {
+            /*
+             * substring
+             *      returns part of the string starting at the first specified index
+             *          up to, but not including, the seond specified index
+             *          
+             *      intiKeyphrase:
+             *      C A E S A R
+             *      0 1 2 3 4 5  <= indices
+             *      
+             *      length = 6
+             */
+            String letter = initKeyphrase.substring(i, i + 1);
+            
+            /*
+             * substring
+             *  if only one index is specified, returns part of the string starting
+             *      at the specified index through the end of the string
+             *      
+             *      substring does not support negative indices
+             *        For example, instead of -2, we would specift intiKeyphrase.length() - 2
+             */
+            String restOfKeyphrase = initKeyphrase.substring(i + 1);
+            // same as: initKeyphrase.substring(i + 1, initKeyphrase.length())
+            
+            /*
+             * indexOf
+             *      returns the index of the start of the first occurence of the specified string
+             *      if not found, returns -1
+             *      
+             *      restOfKeyphrase:
+             *      A E S A R
+             *      0 1 2 3 4  <= indices
+             *      
+             *      length = 5
+             *      
+             *      For example: restOfKeyphrase.indexOf("SA") => returns 2
+             */
+            int index = restOfKeyphrase.indexOf(letter);
+            
+            
+            /*
+             * String concatentation
+             *  + is the string concatenation operator
+             *      concatentates the seconds string operand to the end of the first string operand
+             *          and returns a reference to the new String.
+             */
+            if(index == -1)
+            {
+                this.keyphrase = this.keyphrase + letter;
+                // same as: this.keyphrase += letter
+            }
+            
+        }
+               
+        
     }
     
     /**
