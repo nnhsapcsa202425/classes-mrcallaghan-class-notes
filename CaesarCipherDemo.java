@@ -10,8 +10,7 @@ public class CaesarCipherDemo
 {
     public static void main(String[] args)
     {
-        
-        
+
         /*
          * A Scanner object parses primitive types and Strings from a stream.
          * 
