@@ -19,6 +19,7 @@ public class CaesarCipher
         //this.keyphrase = initialKeyphrase;
         
         this.compressKeyphrase(initialKeyphrase);
+        System.out.println("Compressed keyphrase: " + this.keyphrase);
     }
     
     /**
@@ -76,6 +77,21 @@ public class CaesarCipher
              *      For example: restOfKeyphrase.indexOf("SA")  => returns 2
              */
             int index = restOfKeyphrase.indexOf(letter);
+            
+            
+            /*
+             * String concatenation
+             *      + is the string concatenation operator
+             *      concatentates the seconds string operand to the end of the first string operand
+             *          and returns a reference to the new string
+             *      if one or both operands are string objects, + is the string concatenation operator
+             *          and operands are converted to strings; otherwise + is the addition operator.
+             */
+            if (index == -1) // true if the letter is not a duplicate
+            {
+                this.keyphrase += letter;
+            }
+            
             
             
             
