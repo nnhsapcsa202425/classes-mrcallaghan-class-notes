@@ -19,6 +19,7 @@ public class CaesarCipher
         //this.keyphrase = initialKeyphrase;
         // prepare the keyphrase by removing duplicate letters
         this.compressKeyphrase(initialKeyphrase);
+        System.out.println(this.keyphrase);
     }
     
     /**
@@ -83,8 +84,11 @@ public class CaesarCipher
              *  + is the string concatenation operator
              *      concatentates the seconds string operand to the end of the first string operand
              *          and returns a reference to the new String.
+             *          
+             *  if one or both operands are a String type, + is the String concatentation
+             *      operator (operands are converted to String objects); otherwise + is the addition operator.
              */
-            if(index == -1)
+            if(index == -1)  // checks if letter is not a duplicate
             {
                 this.keyphrase = this.keyphrase + letter;
                 // same as: this.keyphrase += letter
