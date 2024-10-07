@@ -82,5 +82,9 @@ public class CaesarCipherDemo
         // demo #2
         double f = 4.35;
         System.out.println("Floating point imprecision: " + 100 * f);
+        
+        String randomKeyphrase = CaesarCipher.generateKeyphrase(7);
+        
+        System.out.println("Random Keyphrase: " + randomKeyphrase);
     }
 }

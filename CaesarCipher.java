@@ -10,6 +10,12 @@ import java.util.Scanner;
  */
 public class CaesarCipher
 {
+    /*
+     * static: same value for the variable for all objects of the class.
+     *      This is like class attributes in Python.
+     *      Static class varaibales can be accessed directly through the class
+     *          (e.g., CaesarCipher.ALPHABET, Math.PI, Color.RED)
+     */
     private static final String ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     private String keyphrase;
@@ -325,5 +331,47 @@ public class CaesarCipher
         // average time is half the worst time since the best time is cracking the
         //  cipher on the first attempt
         return worstCaseTimeToCrack/2;
+    }
+    
+    /*
+     * This method is static and, therefor, is independent of a CaesarCipher object.
+     * 
+     * As a result, this method can be invoked on the class instead of a variable that references an 
+     *  object.
+     *  
+     *      CaesarCipher.generateKeyphrase(7);
+     *      
+     * The limitation is a that this method cannot access any instance variables or instance methods.
+     *  There is no "this" as we have in other mehtods.
+     */
+    /**
+     * Generates a pseudorandom keyphrase of the specified length.
+     * 
+     * @param length the number of character in keyhprase
+     * @return a pseudorandom keyphrase of the specified length
+     */
+    public static String generateKeyphrase(int length)
+    {
+        String keyphrase = "";
+        
+        for (int i = 0; i < length; i++)
+        {
+            /*
+             * The Math.random static method returns a double from [0.0 ... <1.0]
+             * 
+             * Often we use the following algorithm to generate random integers from (min - max).
+             * 
+             *  int n = (int)((Math.random() * (max - min + 1)) + min);
+             *  
+             *  For example: [0...25]
+             *  
+             *  A B C D E F ... Z
+             *  0 1 2 3 4 5 ... 25
+             */
+            int letterIndex = (int) (Math.random() * 26);
+            keyphrase += CaesarCipher.ALPHABET.substring(letterIndex, letterIndex + 1);
+        }
+        
+        return keyphrase;
     }
 }
