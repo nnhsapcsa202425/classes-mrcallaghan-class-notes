@@ -81,8 +81,8 @@ public class CaesarCipherDemo
         System.out.println("Encrypted: " + encryptedText);
         
         
-        
-        
+        String randomKeyphrase = CaesarCipher.generateKeyphrase(8);
+        System.out.println("Random keyphrase: " + randomKeyphrase);
         
         
     }

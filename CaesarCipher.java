@@ -10,6 +10,14 @@ import java.util.Scanner;
  */
 public class CaesarCipher
 {
+    /*
+     * static: same value for the variable for all objects of the class.
+     * 
+     *      This is like class attributes in Python.
+     *      
+     *      Static class variables can be accessed directly through the class
+     *          (e.g., CaesarCipher.ALPHABET, Math.PI, Color.RED )
+     */
     private static final String ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     
     private String keyphrase;
@@ -326,4 +334,36 @@ public class CaesarCipher
         //  cipher on the first attempt
         return worstCaseTimeToCrack/2;
     }
+    /**
+     * Generates a pseudorandom keyphrase of the specified length in characters.
+     * 
+     * @param length the number of charcters in the keyphrase
+     * @return a pseudorandom keyphrase of a specified length
+     */
+    public static String generateKeyphrase(int length)
+    {
+        String keyphrase = "";
+        
+        for(int i = 0; i < length; i++)
+        {
+            /*
+             * The Math.random static method returns a double from [0.0 ... <1.0]
+             * 
+             * Often we use the following  algortihm to generate random integers from (min-max)
+             * 
+             *      int n = (int)((Math.random() * (max - min + 1)) + min;
+             *      
+             *      A B C D E F G ... Z
+             *      0 1 2 3 4 5 6 ... 25
+             */
+            int letterIndex = (int)(Math.random() * 26);
+            keyphrase += CaesarCipher.ALPHABET.substring(letterIndex, letterIndex + 1);
+        }
+        
+        return keyphrase;
+    }
+    
+    
+    
 }
+ 
