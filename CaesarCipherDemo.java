@@ -79,6 +79,9 @@ public class CaesarCipherDemo
         String encryptedText = cipher.encrypt(text);
         System.out.println("Encrypted text: " + encryptedText);
         
+        String kp = CaesarCipher.generateKeyphrase(10);
+        System.out.println("Random keyphrase: " + kp);
+        
         
         
         
